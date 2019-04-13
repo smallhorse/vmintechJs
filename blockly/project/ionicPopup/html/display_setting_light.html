@@ -1,0 +1,94 @@
+<div ng-controller="lightSettingCtrl">
+    <span class="showStatusClass" style="position: fixed;right: -2px;padding-top: 5px" ng-if="ledLight.link">
+        <img src="images/popup/link/led.png" style="max-width:20px;position: absolute;left:0px;"/>
+        <label style="float:right;">
+            {{languageResource.disconnected}}
+        </label>
+    </span>
+
+    <div class="row setting-light-window">
+        <div class="col-20" style="width:20%">
+            <ul class="list setting-light-window" >
+                <div class="led_activebox">
+                    <i class="ion-android-checkbox-outline-blank checkbox1 active">
+                        &nbsp;&nbsp;
+                        <span data-val='on'>{{languageResource.select_all}}</span>
+                    </i>
+                    <i class="ion-android-checkbox checkbox1">
+                        &nbsp;&nbsp;
+                        <span data-val='off' >{{languageResource.select_all}}</span>
+                    </i>
+                </div>
+                <li class="" ng-repeat="led in lightData track by $index" ng-click="changeLight(led, $index)">
+                    <div class="led-box"
+                         ng-class="{'led-box-sel':$index==lightParam.curLedIndex,'':$index!=lightParam.curLedIndex}">
+                        <span style="line-height: 0px">ID-{{led.id}}</span>
+                        <div class="led-color-div">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-80">
+            <div class="row right-box" style="margin:0px auto;">
+                <input id="ledPartSelected" name="ledPartSelected" type="text" style="display: none;" ng-model="lightParam.ledPartSelected">
+                <input id="curLedIndex" name="curLedIndex" type="text" style="display: none;" ng-model="lightParam.curLedIndex">
+                <div class="doughunt-width">
+                    <div id="doughnutChart" class="chart" style=""></div>
+                </div>
+                <div style="width:60%;border-left:none;">
+                    <!-- <div class="colorPicker-box" style="">
+                        <input id="colorPicker" value="2dc6ec" type="text" class="colorpicker" />
+                    </div> -->
+                    <table class="color_table" >
+                        <tr>
+                            <td>
+                                <span class="color1" data-index="1"></span>
+                            </td>
+                            <td>
+                                <span class="color2" data-index="2"></span>
+                            </td>
+                            <td>
+                                <span class="color3" data-index="3"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="color4" data-index="4"></span>
+                            </td>
+                            <td>
+                                <span class="color5" data-index="5"></span>
+                            </td>
+                            <td>
+                                <span class="color6" data-index="6"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="color7" data-index="7"></span>
+                            </td>
+                            <td>
+                                <span class="color8" data-index="8"></span>
+                            </td>
+                            <td>
+                                <span class="color9" data-index="9"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="color10" data-index="10"></span>
+                            </td>
+                            <td>
+                                <span class="color11" data-index="11"></span>
+                            </td>
+                            <td>
+                                <span class="color12" data-index="12"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

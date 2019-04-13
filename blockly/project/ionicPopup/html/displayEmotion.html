@@ -1,0 +1,91 @@
+<div ng-controller="emotionDisCtrl" class="emotion-win">
+    <span class="showStatusClass" style="position: fixed;right: -2px;padding-top: 5px" ng-if="ledLight.link">
+        <img src="images/popup/link/led.png" style="max-width:20px;position: absolute;left:0px;"/>
+        <label style="float:right;">
+            {{languageResource.disconnected}}
+        </label>
+    </span>
+    <div class="row row-height">
+        <div class="col-20 row-menu">
+            <ul class="list">
+                <li ng-repeat="led in emotionData track by $index" ng-click="selectLight(led, $index)"
+                    ng-class="{'emotion-led-box-sel':$index==emotionParam.curLedIndex,'emotion-led-box-unsel':$index!=emotionParam.curLedIndex}">
+                    <div>ID-{{led.id}}</div>
+                    <div class="emotion-name">{{emotionsName[emotionData[$index].emotionIndex]}}</div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-80">
+            <div class="row row-height">
+                <div class="emotion-box">
+                    <div class="row-height" style="padding-top: 10px;">
+                        <ion-scroll scrollbar-y="true" style="white-space:nowrap;height:100%;">
+                            <div class="sound_effects_list">
+                                <ul>
+                                    <li ng-repeat="em in emotions track by $index" style="float: left;margin:6px;">
+                                        <div class="sound_items_class face-box" ng-click="selectEmotion(em, $index)">
+                                            <img ng-src="images/popup/emotion/{{em}}.png"/>
+                                            <div class="color-box"></div>
+                                        </div>
+                                        <div ng-class="">{{emotionsName[$index]}}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </ion-scroll>
+                    </div>
+                </div>
+                <div class="color-picker">
+                    <!-- <div class="colorPicker-box" style="">
+                        <input id="colorPicker" type="text" class="colorpicker" />
+                    </div> -->
+                    <table class="color_table" style="width: 100%;margin-right: 0;">
+                        <tr>
+                            <td>
+                                <span class="color1" data-index="1"></span>
+                            </td>
+                            <td>
+                                <span class="color2" data-index="2"></span>
+                            </td>
+                            <td>
+                                <span class="color3" data-index="3"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="color4" data-index="4"></span>
+                            </td>
+                            <td>
+                                <span class="color5" data-index="5"></span>
+                            </td>
+                            <td>
+                                <span class="color6" data-index="6"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="color7" data-index="7"></span>
+                            </td>
+                            <td>
+                                <span class="color8" data-index="8"></span>
+                            </td>
+                            <td>
+                                <span class="color9" data-index="9"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="color10" data-index="10"></span>
+                            </td>
+                            <td>
+                                <span class="color11" data-index="11"></span>
+                            </td>
+                            <td>
+                                <span class="color12" data-index="12"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div ng-controller="sceneLightCtrl" class="emotion-win">
+    <span class="showStatusClass" style="position: fixed;right: -2px;padding-top: 5px" ng-if="ledLight.link">
+        <img src="images/popup/link/led.png" style="max-width:20px;position: absolute;left:0px;"/>
+        <label style="float:right;">
+            {{languageResource.disconnected}}
+        </label>
+    </span>
+    <div class="row row-height">
+        <div class="col-20 row-menu">
+            <ul class="list">
+                <li ng-repeat="led in emotionData track by $index" ng-click="selectLight(led, $index)"
+                    ng-class="{'emotion-led-box-sel':$index==emotionParam.curLedIndex,'emotion-led-box-unsel':$index!=emotionParam.curLedIndex}">
+                    <div>ID-{{led.id}}</div>
+                    <div class="emotion-name">{{emotionsName[emotionData[$index].emotionIndex]}}</div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-80">
+            <div class="row row-height">
+                <ion-scroll scrollbar-y="true" style="white-space:nowrap;height:100%;">
+                    <div class="sound_effects_list">
+                        <ul>
+                            <li ng-repeat="em in emotions track by $index" style="float: left;margin:6px;">
+                                <div class="sound_items_class face-box" ng-click="selectEmotion(em, $index)">
+                                    <img ng-src="images/popup/emotion/{{em}}.png"/>
+                                </div>
+                                <div ng-class="">{{emotionsName[$index]}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </ion-scroll>
+            </div>
+        </div>
+    </div>
+</div>
